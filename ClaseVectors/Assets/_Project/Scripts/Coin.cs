@@ -1,0 +1,17 @@
+using UnityEngine;
+
+public class Coin : MonoBehaviour
+{
+	public int points = 10;
+
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.CompareTag("Player"))
+		{
+			AudioManager.Instance.PlayCoinSound();
+			GameManager.Instance.AddScore(points);
+			Destroy(gameObject);
+			
+		}
+	}
+}
