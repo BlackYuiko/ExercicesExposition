@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private int score = 0;
+    [SerializeField] private TMP_Text scoreText;
+
+    
 
     private void Awake()
     {
@@ -24,7 +28,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int points) 
     {
         score += points;
-        Debug.Log("Score: " + score);
+        scoreText.text = $"Score: {score}";
     }
 
     public void StartGame() 
