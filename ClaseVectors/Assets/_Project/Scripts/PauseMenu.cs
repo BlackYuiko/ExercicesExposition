@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,23 +13,14 @@ public class PauseMenu : MonoBehaviour
 		gameObject.SetActive(false);
 		Time.timeScale = 1f;
 	}
+	public void ResetGame()
+	{
+		Time.timeScale = 1f;
+		SceneManager.LoadScene("Game");
+	}
 	public void Quit()
 	{
 		Application.Quit();
 		Debug.Log("Application quitted");
-	}
-	public void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			if (!gameObject.activeSelf)
-			{
-				OpenPause();
-			}
-			else
-			{
-				ClosePause();
-			}
-		}
 	}
 }
